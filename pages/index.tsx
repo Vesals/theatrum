@@ -25,6 +25,7 @@ import {
   Paper,
   Fab,
   IconButton,
+  ButtonBase,
 } from "@mui/material";
 
 import { app, db } from "../firebaseConfig";
@@ -53,6 +54,8 @@ function Index({ rows = [] }: Props) {
   const [del, setDel] = React.useState(false);
   const toggleDel = () => setDel(!del);
 
+  const [chs, setChs] = React.useState(false);
+
   const [docId, setDocId] = React.useState("");
   const [docTitle, setDocTitle] = React.useState("");
 
@@ -78,14 +81,17 @@ function Index({ rows = [] }: Props) {
     setPage(0);
   };
 
-  const handleCellClick = (id: string) => router.push(`/detail/${id}`);
-
-  const deleteTodo = async (id: string, e: React.SyntheticEvent) => {
-    e.stopPropagation();
-    const docRef = doc(db, "movies", id);
-    await deleteDoc(docRef);
-    refreshData();
+  const handleCellClick = (id: string) => {
+    setChs(true);
+    router.push(`/detail/${id}`);
   };
+
+  // const deleteTodo = async (id: string, e: React.SyntheticEvent) => {
+  //   e.stopPropagation();
+  //   const docRef = doc(db, "movies", id);
+  //   await deleteDoc(docRef);
+  //   refreshData();
+  // };
 
   return (
     <>
@@ -122,7 +128,7 @@ function Index({ rows = [] }: Props) {
                 <TableHead
                   sx={{
                     backgroundColor: "#827397",
-                    "& .MuiTableCell-head": {
+                    ".MuiTableCell-head": {
                       color: "white",
                     },
                   }}
@@ -150,7 +156,11 @@ function Index({ rows = [] }: Props) {
                     </TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody
+                  sx={{
+                    ".MuiTableRow-root:active": { backgroundColor: "#DDDDDD" },
+                  }}
+                >
                   {(rowsPerPage > 0
                     ? rows.slice(
                         page * rowsPerPage,
@@ -161,7 +171,9 @@ function Index({ rows = [] }: Props) {
                     <TableRow
                       key={row.id}
                       hover
-                      sx={{ "&:hover": { cursor: "pointer" } }}
+                      sx={{
+                        "&:hover": { cursor: "pointer" },
+                      }}
                     >
                       <TableCell
                         component="th"

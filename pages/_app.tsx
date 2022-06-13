@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Grid>
         <Grid item>
           <Typography variant="caption" component="div">
-            2022 Theatrum. All Rights Reserved.
+            &copy; 2022 Theatrum. All Rights Reserved.
           </Typography>
         </Grid>
       </Grid>
