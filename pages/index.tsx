@@ -213,12 +213,7 @@ function Index({ rows = [] }: Props) {
                 <TableFooter>
                   <TableRow>
                     <TablePagination
-                      rowsPerPageOptions={[
-                        1,
-                        5,
-                        7,
-                        { label: "All", value: -1 },
-                      ]}
+                      rowsPerPageOptions={[3, 5, { label: "All", value: -1 }]}
                       colSpan={5}
                       count={rows.length}
                       rowsPerPage={rowsPerPage}
