@@ -19,7 +19,9 @@ type Props = {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const id = params?.id ?? "";
-  const response = await fetch(`http://localhost:3000/api/movies/${id}`);
+  const response = await fetch(
+    `https://theatrum-three.vercel.app/api/movies/${id}`
+  );
   const data = await response.json();
   return {
     props: { mov: data },

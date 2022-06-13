@@ -37,7 +37,7 @@ const dbCol = doc(dbInstance);
 type Props = { rows?: Array<Movie> };
 
 export async function getServerSideProps() {
-  const response = await fetch("http://localhost:3000/api/movies");
+  const response = await fetch("https://theatrum-three.vercel.app/api/movies");
   const data = await response.json();
   return {
     props: { rows: data },
