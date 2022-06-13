@@ -1,8 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
-import { useFormik, Formik, Form, Field } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
-import { useRouter } from "next/router";
 import { app, db } from "../firebaseConfig";
 import { collection, doc, setDoc } from "firebase/firestore";
 
@@ -10,9 +8,7 @@ import { TextField, Button } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Router } from "@mui/icons-material";
 
 type Props = {
   show: boolean;

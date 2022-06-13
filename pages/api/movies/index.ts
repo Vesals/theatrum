@@ -15,8 +15,6 @@ export default async function movies(
   );
   movSnap.forEach((snapshot) => {
     const data = snapshot.data() as Movie;
-    // data.createdAt = data.createdAt.toDate().toString();
-    // console.log(data)
     mov.push(data);
   });
   res.status(200).json(mov);

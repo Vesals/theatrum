@@ -19,9 +19,11 @@ type Props = {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const id = params?.id ?? "";
-  const response = await fetch(
-    `https://theatrum-three.vercel.app/api/movies/${id}`
-  );
+  // const response = await fetch(
+  //   `https://theatrum-three.vercel.app/api/movies/${id}`
+  // );
+  const response = await fetch(`http://localhost:3000/api/movies/${id}`);
+
   const data = await response.json();
   return {
     props: { mov: data },
@@ -91,7 +93,7 @@ const EditMovie = ({ mov }: Props) => {
           spacing={0}
           alignItems="center"
           justifyContent="center"
-          sx={{ minHeight: "100vh" }}
+          sx={{ minHeight: "90vh" }}
         >
           <Grid item xs sx={{ border: 1, padding: 5, borderRadius: 5 }}>
             <Grid

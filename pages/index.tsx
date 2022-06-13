@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Movie } from "../types";
-import Link from "next/link";
 
 import AddMovie from "./addMovie";
 import DelMovie from "./delMovie";
@@ -37,7 +36,8 @@ const dbCol = doc(dbInstance);
 type Props = { rows?: Array<Movie> };
 
 export async function getServerSideProps() {
-  const response = await fetch("https://theatrum-three.vercel.app/api/movies");
+  // const response = await fetch("https://theatrum-three.vercel.app/api/movies");
+  const response = await fetch("http://localhost:3000/api/movies");
   const data = await response.json();
   return {
     props: { rows: data },
@@ -45,7 +45,6 @@ export async function getServerSideProps() {
 }
 
 function Index({ rows = [] }: Props) {
-  // console.log(rows);
   const router = useRouter();
 
   const [open, setOpen] = React.useState(false);
@@ -62,7 +61,6 @@ function Index({ rows = [] }: Props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
