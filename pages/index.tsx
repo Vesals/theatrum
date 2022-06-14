@@ -155,6 +155,7 @@ function Index({ rows = [] }: Props) {
                 </TableHead>
                 <TableBody
                   sx={{
+                    ".MuiTableRow-root:hover": { backgroundColor: "#EFEFEF" },
                     ".MuiTableRow-root:active": { backgroundColor: "#D1D1D1" },
                   }}
                 >
