@@ -54,8 +54,6 @@ function Index({ rows = [] }: Props) {
   const [del, setDel] = React.useState(false);
   const toggleDel = () => setDel(!del);
 
-  const [chs, setChs] = React.useState(false);
-
   const [docId, setDocId] = React.useState("");
   const [docTitle, setDocTitle] = React.useState("");
 
@@ -82,7 +80,6 @@ function Index({ rows = [] }: Props) {
   };
 
   const handleCellClick = (id: string) => {
-    setChs(true);
     router.push(`/detail/${id}`);
   };
 
@@ -158,7 +155,7 @@ function Index({ rows = [] }: Props) {
                 </TableHead>
                 <TableBody
                   sx={{
-                    ".MuiTableRow-root:active": { backgroundColor: "#DDDDDD" },
+                    ".MuiTableRow-root:active": { backgroundColor: "#D1D1D1" },
                   }}
                 >
                   {(rowsPerPage > 0
